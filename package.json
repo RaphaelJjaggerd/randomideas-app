@@ -1,0 +1,19 @@
+{
+  "name": "randomideas-app",
+  "version": "1.0.0",
+  "description": "An app for sharing random ideas",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaphaelJjaggerd/randomideas-app.git"
+  },
+  "author": "Raphael Jjaggerd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaphaelJjaggerd/randomideas-app/issues"
+  },
+  "homepage": "https://github.com/RaphaelJjaggerd/randomideas-app#readme"
+}
