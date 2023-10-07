@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
 
 // Get Single Idea.
 router.get('/:id', (req, res) => {
-  const idea = ideas.find((idea) => idea.id === +req.params.id);
+  const idea = ideas.find((idea) => idea.id === parseInt(req.params.id));
 
   if (!idea) {
     return res
@@ -43,4 +43,46 @@ router.get('/:id', (req, res) => {
   res.json({ success: true, data: idea });
 });
 
+// Create idea
+router.post('/', (req, res) => {
+  const idea = {
+    idea: ideas.length + 1,
+    text: req.body.text,
+    tag: req.body.tag,
+    username: req.body.username,
+    date: new Date().toISOString().slice(0, 10),
+  };
+
+  ideas.push(idea);
+
+  res.json({ success: true, data: idea });
+  console.log(ideas);
+});
+
+// Update Idea
+router.put('/:id', (req, res) => {
+  const idea = ideas.find((idea) => idea.id === parseInt(req.params.id));
+
+  if (!idea) {
+    res.status(404).json({ success: false, error: 'Resource not found' });
+  } else {
+    idea.text = req.body.text || idea.text;
+    idea.tag = req.body.tag || idea.tag;
+    res.json({ success: true, data: idea });
+  }
+});
+
+// Delete Ideas
+router.delete('/:id', (req, res) => {
+  const idea = ideas.find((idea) => idea.id === parseInt(req.params.id));
+
+  if (!idea) {
+    res.status(404).json({ success: false, error: 'Resource not found!' });
+  } else {
+    const index = ideas.indexOf(idea);
+    ideas.splice(index, 1);
+
+    res.json({ success: true, data: {} });
+  }
+});
 module.exports = router;
