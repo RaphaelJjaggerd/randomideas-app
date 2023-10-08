@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
+const connectDB = require('./config/db.js');
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Connect Database
+connectDB();
 // Body Parser Middleware that allows us to accept form data ro raw json
 app.use(express.json()); // Allows us to send raw json to the server.
 app.use(express.urlencoded({ extended: false })); // Allows us to send/request form data
