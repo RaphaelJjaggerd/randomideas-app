@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Body Parser Middleware that allows us to accept form data ro raw json
 app.use(express.json()); // Allows us to send raw json to the server.
