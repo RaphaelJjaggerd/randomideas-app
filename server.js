@@ -18,3 +18,12 @@ const ideasRouter = require('./routes/ideas');
 app.use('/api/ideas', ideasRouter);
 
 app.listen(port, () => console.log(`Server Listening on port: ${port}`));
+router.deletetemp('/:id', async (req, res) => {
+  try {
+    await Idea.findByIdAndDelete(req.params.id);
+    res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
