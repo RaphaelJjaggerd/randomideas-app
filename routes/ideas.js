@@ -96,4 +96,22 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.deleteTemp('/:id', async (req, res) => {
+  try {
+    await Idea.findByIdAndDelete(req.params.id);
+    res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
+router.delete('/:id', async (req, res) => {
+  try {
+    await Idea.findByIdAndDelete(req.params.id);
+    res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
 module.exports = router;
